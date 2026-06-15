@@ -118,7 +118,8 @@ class IPTVChecker:
         output_dir = os.path.join(current_dir, '..', 'output')
         os.makedirs(output_dir, exist_ok=True)
         safe_country_name = "".join([c for c in self.country_name if c.isalpha() or c.isdigit() or c==' ']).rstrip()
-        filename = f"{safe_country_name}_{os.path.basename(self.playlist_url.replace('\\', '/'))}"
+        safe_url = self.playlist_url.replace('\\', '/')
+        filename = f"{safe_country_name}_{os.path.basename(safe_url)}"
         # Ensure we always end with .m3u
         if not filename.endswith('.m3u'):
             filename += '.m3u'
